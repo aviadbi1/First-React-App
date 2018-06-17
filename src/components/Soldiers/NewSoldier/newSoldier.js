@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -37,8 +38,8 @@ class NewSoldier extends React.Component {
                     <TextField required="true" type="number" label="ID" name="id" margin="normal" />
                     <TextField required="true" label="Name" name="name" margin="normal" />
                     <TextField required="true" label="System" name="system" margin="normal" />
-                    <Button variant="contained" color="primary" type="submit">
-                        Add Soldier
+                    <Button variant="fab" mini color="secondary" aria-label="add" type="submit">
+                        <AddIcon />
                     </Button>
                 </form>
             </div>

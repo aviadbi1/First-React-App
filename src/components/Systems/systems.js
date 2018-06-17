@@ -13,6 +13,7 @@ class Systems extends React.Component {
         };
 
         this.addSystem = this.addSystem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     addSystem(newSystem) {
@@ -21,11 +22,18 @@ class Systems extends React.Component {
         }));
     }
 
+    deleteItem(unwantedKey) {
+        let filteredItems = this.state.systems.filter((item) => item.key !== unwantedKey);
+        this.setState({
+            systems: filteredItems
+        });
+    }
+
     render() {
         return (
             <div>
                 <NewSystem onNewSystem={this.addSystem} />
-                <SystemItems systems={this.state.systems} />
+                <SystemItems deleteItem={this.deleteItem} systems={this.state.systems} />
             </div>
         );
     }
