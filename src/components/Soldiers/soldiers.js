@@ -13,6 +13,7 @@ class Soldiers extends React.Component {
         };
 
         this.addSoldier = this.addSoldier.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     addSoldier(newSoldier) {
@@ -21,11 +22,18 @@ class Soldiers extends React.Component {
         }));
     }
 
+    deleteItem(unwantedKey) {
+        let filteredItems = this.state.soldiers.filter((item) => item.key !== unwantedKey);
+        this.setState({
+            soldiers: filteredItems
+        });
+    }
+
     render() {
         return (
             <div>
                 <NewSoldier onNewSoldier={this.addSoldier} />
-                <SoldierItems soldiers={this.state.soldiers} />
+                <SoldierItems deleteItem={this.deleteItem} soldiers={this.state.soldiers} />
             </div>
         );
     }

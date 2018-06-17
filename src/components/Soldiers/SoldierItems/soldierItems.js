@@ -6,12 +6,21 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 class SoldierItems extends Component {
 
     constructor(props) {
         super(props);
         this.createTableEntry = this.createTableEntry.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
+    }
+
+
+    deleteItem(key) {
+        this.props.deleteItem(key);
     }
 
     createTableEntry(soldier) {
@@ -20,6 +29,9 @@ class SoldierItems extends Component {
                 <TableCell> {soldier.id} </TableCell>
                 <TableCell> {soldier.name} </TableCell>
                 <TableCell> {soldier.system} </TableCell>
+                <Button variant="fab" mini  onClick={() => this.deleteItem(soldier.key)}>
+                    <DeleteIcon />
+                </Button>
             </TableRow>;
         return element;
     }

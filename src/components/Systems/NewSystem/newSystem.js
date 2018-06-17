@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import AddIcon from '@material-ui/icons/Add';
 
 class NewSystem extends React.Component {
 
@@ -36,8 +37,8 @@ class NewSystem extends React.Component {
                     <TextField label="Name" name="name" margin="normal" />
                     <TextField label="PO" name="po" margin="normal" />
                     <TextField label="URL" name="url" margin="normal" />
-                    <Button variant="contained" color="primary" type="submit">
-                        Add System
+                    <Button variant="fab" mini color="secondary" aria-label="add" type="submit">
+                        <AddIcon />
                     </Button>
                 </form>
             </div>
