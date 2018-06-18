@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import ToDoList from "./components/ToDoList/todolist";
-import Soldiers from "./components/Soldiers/soldiers";
-import Systems from "./components/Systems/systems";
+import ToDoList from "../ToDoList/todolist";
+import Soldiers from "../Soldiers/soldiers";
+import Systems from "../Systems/systems";
 
 import logo from './logo.svg';
 import './App.css';

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SystemActions from '../../../actions/systemActions';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
@@ -9,8 +11,16 @@ class NewSystem extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getFreshSystem = this.getFreshSystem.bind(this);
     }
 
+    getFreshSystem() {
+        return {
+            name: '',
+            po: '',
+            url: ''
+        };
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -26,7 +36,7 @@ class NewSystem extends React.Component {
             url: url
         };
 
-        this.props.onNewSystem(newSystem);
+        SystemActions.addNewSystem(newSystem);
     }
 
     render() {
