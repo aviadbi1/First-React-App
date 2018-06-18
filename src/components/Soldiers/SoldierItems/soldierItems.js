@@ -29,9 +29,11 @@ class SoldierItems extends Component {
                 <TableCell> {soldier.id} </TableCell>
                 <TableCell> {soldier.name} </TableCell>
                 <TableCell> {soldier.system} </TableCell>
-                <Button variant="fab" mini  onClick={() => this.deleteItem(soldier.key)}>
-                    <DeleteIcon />
-                </Button>
+                <TableCell>
+                    <Button variant="fab" mini onClick={() => this.deleteItem(soldier.key)}>
+                        <DeleteIcon />
+                    </Button>
+                </TableCell>
             </TableRow>;
         return element;
     }

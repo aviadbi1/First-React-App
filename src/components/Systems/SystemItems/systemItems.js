@@ -49,9 +49,11 @@ class SystemItems extends Component {
                 <TableCell> {system.name} </TableCell>
                 <TableCell> {system.po} </TableCell>
                 <TableCell> {system.url} </TableCell>
-                <Button variant="fab" mini onClick={() => this.deleteItem(system.key)}>
-                    <DeleteIcon />
-                </Button>
+                <TableCell>
+                    <Button variant="fab" mini onClick={() => this.deleteItem(system.key)}>
+                        <DeleteIcon />
+                    </Button>
+                </TableCell>
             </TableRow>;
         return element;
     }
