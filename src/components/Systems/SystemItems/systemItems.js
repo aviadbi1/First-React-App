@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import SystemStore from '../../../stores/systemStore';
+import SystemActions from '../../../actions/systemActions';
+
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,21 +17,39 @@ class SystemItems extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            systems: SystemStore.getAllItems()
+        };
+
+        this.onChange = this.onChange.bind(this);
         this.createTableEntry = this.createTableEntry.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    deleteItem(key) {
-        this.props.deleteItem(key);
+    componentWillMount() {
+        SystemStore.addChangeListener(this.onChange);
     }
-    
+
+    componentWillUnmount() {
+        SystemStore.removeChangeListener(this.onChange);
+    }
+
+    onChange() {
+        this.setState({ systems: SystemStore.getAllItems() });
+    }
+
+    deleteItem(key) {
+        SystemActions.deleteSystem(key);
+    }
+
     createTableEntry(system) {
         let element =
             <TableRow key={system.key}>
                 <TableCell> {system.name} </TableCell>
                 <TableCell> {system.po} </TableCell>
                 <TableCell> {system.url} </TableCell>
-                <Button variant="fab" mini  onClick={() => this.deleteItem(system.key)}>
+                <Button variant="fab" mini onClick={() => this.deleteItem(system.key)}>
                     <DeleteIcon />
                 </Button>
             </TableRow>;
@@ -36,8 +57,7 @@ class SystemItems extends Component {
     }
 
     render() {
-        let mapping = this.props.systems;
-        let systems = mapping.map(this.createTableEntry);
+        let systems = this.state.systems.map(this.createTableEntry);
         return (
             <Paper>
                 <Table>
