@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SystemStore from '../../../stores/systemStore';
+import MultipleSelect from './multiselect';
 
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -63,6 +64,9 @@ class NewSoldier extends React.Component {
                         <AddIcon />
                     </Button>
                 </form>
+                <br/>
+                <br/>
+                <MultipleSelect/>
             </div>
         );
     }
